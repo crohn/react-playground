@@ -1,0 +1,9 @@
+{
+  "name": "react-playground",
+  "version": "0.0.0",
+  "description": "Environment for playing with React",
+  "main": "index.js",
+  "author": "Davide Giuseppe Monaco <monaco.dg@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
