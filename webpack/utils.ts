@@ -41,7 +41,7 @@ const plugins = (context: string, { HTMLTemplate, outputDir, sourceDir }: Config
 const rules = (mode: Mode): Rules => {
   const rules: Rules = [
     {
-      test: /\.ts$/,
+      test: /\.tsx$/,
       exclude: /node_modules/,
       use: { loader: 'babel-loader' },
     },
@@ -83,6 +83,6 @@ export const createConfig = (context: string, mode: Mode, options: ConfigOptions
   plugins: plugins(context, options),
 
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
 });

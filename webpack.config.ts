@@ -6,7 +6,7 @@ const context = path.resolve(__dirname);
 
 const options = {
   HTMLTemplate: 'index.html',
-  entryFilename: 'index.ts',
+  entryFilename: 'index.tsx',
   outputDir: 'dist',
   sourceDir: 'src',
 };
