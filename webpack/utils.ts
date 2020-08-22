@@ -25,6 +25,9 @@ const devServer = (mode: Mode) => {
 
 const plugins = (context: string, { HTMLTemplate, outputDir, sourceDir }: ConfigOptions): webpack.Plugin[] => [
   new ForkTsCheckerWebpackPlugin({
+    eslint: {
+      files: path.join(context, sourceDir, '**/*.{ts,tsx,js,jsx}'),
+    },
     typescript: {
       diagnosticOptions: {
         semantic: true,

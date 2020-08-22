@@ -1,3 +1,3 @@
 import React from 'react';
 
-export const App = () => <div>Hello world!</div>;
+export const App = (): JSX.Element => <div>Hello world!</div>;
