@@ -20,6 +20,9 @@ const devServer = (mode: Mode) => {
     headers: {
       AccessControlAllowOrigin: '*',
     },
+    // this is needed for 'cannot GET /URL' react-router issue
+    // see https://ui.dev/react-router-cannot-get-url-refresh/
+    historyApiFallback: true,
   };
 };
 
@@ -81,6 +84,9 @@ export const createConfig = (context: string, mode: Mode, options: ConfigOptions
   output: {
     filename: mode === 'production' ? '[name].[hash].js' : '[name].js',
     path: path.join(context, options.outputDir),
+    // this is needed for 'cannot GET /URL' react-router issue
+    // see https://ui.dev/react-router-cannot-get-url-refresh/
+    publicPath: '/',
   },
 
   plugins: plugins(context, options),
