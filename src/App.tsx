@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
+import { css, Global } from '@emotion/core';
 import { GridLayout } from './components/GridLayout';
 import { Home } from './components/Home';
-import { Global, css } from '@emotion/core';
 
 export const App = (): JSX.Element => (
   <Fragment>
     <Global
       styles={css`
         * {
-          box-sizing: 'border-box';
+          box-sizing: border-box;
           font-family: 'Oxanium', cursive;
           font-size: 14px;
           font-weight: 300;
