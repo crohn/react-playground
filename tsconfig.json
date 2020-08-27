@@ -1,12 +1,16 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
     "jsx": "react",
     "module": "esnext",
     "moduleResolution": "node",
     "noImplicitAny": true,
     "noEmit": true,
     "outDir": "dist",
+    "paths": {
+      "test-utils": ["./utils/test-utils"]
+    },
     "preserveConstEnums": true,
     "resolveJsonModule": true,
     "strictNullChecks": true,
