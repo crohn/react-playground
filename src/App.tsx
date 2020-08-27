@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import { css, Global } from '@emotion/core';
-import { GridLayout } from './components/GridLayout';
+import { GridLayoutPage } from './components/GridLayout';
 import { Home } from './components/Home';
 
 export const App = (): JSX.Element => (
@@ -41,7 +41,7 @@ export const App = (): JSX.Element => (
     </header>
     <Switch>
       <Route path="/react-grid-layout">
-        <GridLayout />
+        <GridLayoutPage />
       </Route>
 
       <Route exact path="/">
