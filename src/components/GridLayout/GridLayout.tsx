@@ -13,18 +13,18 @@ const GRID_ROW_HEIGHT = 30;
 interface LayoutState {
   layout: Layout[];
   /** maximum grid item's (y + h) used to compute gradient */
-  maxYH: number;
+  maxY: number;
 }
 
 export const GridLayout = (): JSX.Element => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const [layoutState, setLayoutState] = useState<LayoutState>({ layout: createLayout(), maxYH: 1 });
+  const [layoutState, setLayoutState] = useState<LayoutState>({ layout: createLayout(), maxY: 1 });
 
   const handleLayoutChange = useCallback((nextLayout: Layout[]) => {
-    const maxYH = nextLayout.reduce((maxValue, item) => Math.max(maxValue, item.h + item.y), 1);
+    const maxY = nextLayout.reduce((maxValue, item) => Math.max(maxValue, item.h + item.y), 1);
 
-    setLayoutState({ layout: nextLayout, maxYH });
+    setLayoutState({ layout: nextLayout, maxY });
   }, []);
 
   const width = useWidthProvider({ containerRef });
@@ -43,7 +43,7 @@ export const GridLayout = (): JSX.Element => {
         >
           {layoutState.layout.map((item) => (
             <div key={item.i}>
-              <GradientCard layout={item} maxX={GRID_COLS} maxY={layoutState.maxYH} />
+              <GradientCard layout={item} maxX={GRID_COLS} maxY={layoutState.maxY} />
             </div>
           ))}
         </ReactGridLayout>

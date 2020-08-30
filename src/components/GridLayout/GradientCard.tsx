@@ -1,6 +1,7 @@
-import React, { useMemo } from 'react';
+import React, { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Layout } from 'react-grid-layout';
 import styled from '@emotion/styled';
+import { GeometryViewer } from './GeometryViewer';
 import { computeGradients, Gradients } from './utils';
 
 const Wrapper = styled('div')<{ gradients: Gradients }>`
@@ -24,7 +25,23 @@ interface Props {
 }
 
 export const GradientCard = ({ layout, maxX, maxY }: Props): JSX.Element => {
+  const { x, y, i: id } = layout;
+
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const [rect, setRect] = useState<DOMRect>();
+
   const gradients = useMemo(() => computeGradients(layout, maxX, maxY), [layout, maxX, maxY]);
 
-  return <Wrapper gradients={gradients}>{JSON.stringify(layout)}</Wrapper>;
+  useLayoutEffect(() => {
+    if (!containerRef.current) return;
+
+    setRect(containerRef.current.getBoundingClientRect());
+  }, [layout]);
+
+  return (
+    <Wrapper ref={containerRef} gradients={gradients}>
+      {rect && <GeometryViewer id={id} x={x} y={y} width={rect.width} height={rect.height} />}
+    </Wrapper>
+  );
 };
